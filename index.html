@@ -81,12 +81,12 @@
     let showHomeScreen = true;
     let gameInterval = null;
 
-    // Asset Loading
+    // Asset Loading (Updated Paths)
     const startImage = new Image();
-    startImage.src = "images/snake attack.gif";
+    startImage.src = "resources/images/snake attack.gif";
 
     const gameOverImage = new Image();
-    gameOverImage.src = "images/die-snake.gif";
+    gameOverImage.src = "resources/images/die-snake.gif";
 
     // Event Listeners
     window.addEventListener("keydown", handleKeyPress);
@@ -96,6 +96,11 @@
     draw();
 
     function startGame() {
+        // Reset starting position for snake segments
+        for (let i = 0; i < bodyParts; i++) {
+            x[i] = 0;
+            y[i] = 0;
+        }
         newApple();
         running = true;
         if (gameInterval) clearInterval(gameInterval);
